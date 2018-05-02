@@ -1,0 +1,19 @@
+{
+  "name": "image-search-abstraction-layer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "prestart": "sudo mongod --port 8080 --dbpath=./data"
+  },
+  "author": "Pradesh Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.16",
+    "node-bing-api": "^4.0.0"
+  }
+}
