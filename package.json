@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "prestart": "sudo mongod --port 8080 --dbpath=./data"
+    "prestart": "mongod --port 8090 --dbpath=./data"
   },
   "author": "Pradesh Kumar",
   "license": "ISC",
