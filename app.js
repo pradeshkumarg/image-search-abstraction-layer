@@ -46,16 +46,15 @@ app.get("/api/imagesearch/:searchVal*", (req, res, next) => {
 
 
 
-  var searchOffset=1;
+  var searchOffset = 1;
 
   //Does offset Exist
-  if(offset){
-    if(offset === 1){
-      offset=0;
+  if (offset) {
+    if (offset === 1) {
+      offset = 0;
       searchOffset = 1;
-    }
-    else if (offset>1) {
-      searchOffset = offset+1;
+    } else if (offset > 1) {
+      searchOffset = offset + 1;
     }
   }
 
@@ -64,21 +63,25 @@ app.get("/api/imagesearch/:searchVal*", (req, res, next) => {
     skip: (10 * offset)
   }, (err, rez, body) => {
 
-    var bingData = [];
-    for (var i = 0; i < 10; i++) {
-      console.log(body.value[i].webSearchUrl);
-      bingData.push({
-        url: body.value[i].webSearchUrl,
-        snippet: body.value[i].name,
-        thumbnail: body.value[i].thumbnailUrl,
-        context: body.value[i].hostPageDisplayUrl
-      });
+
+
+    if (offset) {
+      var bingData = [];
+      for (var i = 0; i < 10; i++) {
+        bingData.push({
+          url: body.value[i].webSearchUrl,
+          snippet: body.value[i].name,
+          thumbnail: body.value[i].thumbnailUrl,
+          context: body.value[i].hostPageDisplayUrl
+        });
+      }
+      res.json(bingData);
+    } else {
+        res.json(body);
     }
-    res.json(bingData);
+
   });
 });
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log("Everything works fine !!");
-})
+app.listen(port, () => {})
